@@ -40,24 +40,24 @@ namespace Ignite
         /// Execute individual Put and Get.
         /// </summary>
         /// <param name="cache">Cache instance.</param>
-        //private static void PutGet(ICacheClient<int, Organization> cache)
-        //{
-        //    // Create new Organization to store in cache.
-        //    Organization org = new Organization(
-        //        "Microsoft",
-        //        new Address("1096 Eddy Street, San Francisco, CA", 94109),
-        //        OrganizationType.Private,
-        //        DateTime.Now
-        //    );
+        private static void PutGet(ICacheClient<int, Organization> cache)
+        {
+            // Create new Organization to store in cache.
+           Organization org = new Organization(
+                "Microsoft",
+               new Address("1096 Eddy Street, San Francisco, CA", 94109),
+                OrganizationType.Private,
+               DateTime.Now
+            );
 
-            // Put created data entry to cache.
-            //cache.Put(1, org);
+             Put created data entry to cache.
+            cache.Put(1, org);
 
-            //// Get recently created employee as a strongly-typed fully de-serialized instance.
-            //Organization orgFromCache = cache.Get(1);
+            // Get recently created employee as a strongly-typed fully de-serialized instance.
+           Organization orgFromCache = cache.Get(1);
 
-            //Console.WriteLine();
-            //Console.WriteLine(">>> Retrieved organization instance from cache: " + orgFromCache);
+            Console.WriteLine();
+            Console.WriteLine(">>> Retrieved organization instance from cache: " + orgFromCache);
         }
     }
 

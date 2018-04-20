@@ -7,23 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IgniteNet2
+namespace Ignitedotnet
 {
     class DurableMemory
     {
-        public static void Main()
+        static void Main()
         {
-                    var cfg = new IgniteConfiguration
+            var cfg = new IgniteConfiguration
+            {
+                DataStorageConfiguration = new DataStorageConfiguration
+                {
+                    DefaultDataRegionConfiguration = new DataRegionConfiguration
                     {
-                        DataStorageConfiguration = new DataStorageConfiguration
-                        {
-                            DefaultDataRegionConfiguration = new DataRegionConfiguration
-                            {
-                                Name = "defaultRegion",
-                                InitialSize = 128 * 1024 * 1024,  // 128 MB,
-                                MaxSize = 4L * 1024 * 1024 * 1025  // 4 GB
-                            },
-                            DataRegionConfigurations = new[]
+                        Name = "defaultRegion",
+                        InitialSize = 256 * 1024 * 1024,  // 256 MB,
+                        MaxSize = 4L * 1024 * 1024 * 1025  // 4 GB
+                    },
+                    DataRegionConfigurations = new[]
                     {
                             new DataRegionConfiguration
                             {
@@ -32,9 +32,9 @@ namespace IgniteNet2
                                 MaxSize = 512 * 1024 * 1025  // 512 MB
                             }
                         }
-                    },
-                        CacheConfiguration = new[]
-                    {
+                },
+                CacheConfiguration = new[]
+                {
                             new CacheConfiguration
                             {
                                 Name = "cache1"  // Use default region
@@ -45,11 +45,10 @@ namespace IgniteNet2
                                 DataRegionName = "customRegion"
                             }
                         }
-                    };
+            };
             Console.WriteLine("Done !!!");
             Console.ReadLine();
         }
-
 
     }
 }
